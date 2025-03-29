@@ -8,7 +8,6 @@
   "host": "project2-tm4d.onrender.com/",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
