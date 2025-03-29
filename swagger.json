@@ -5,7 +5,7 @@
     "description": "Games Api",
     "version": "1.0.0"
   },
-  "host": "project2-tm4d.onrender.com/",
+  "host": "project2-tm4d.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
