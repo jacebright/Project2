@@ -13,7 +13,8 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongodb": "^6.15.0",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "validatorjs": "^3.22.1"
   },
   "devDependencies": {
     "swagger-autogen": "^2.23.7"

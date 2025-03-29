@@ -1,7 +1,7 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAllGames = async (req, res) => {
+const getAllGames = (req, res) => {
     //#swagger.tags=['Games']
     mongodb
         .getDatabase()
@@ -17,15 +17,18 @@ const getAllGames = async (req, res) => {
         });
 };
 
-const getSingleGame = async (req, res) => {
+const getSingleGame = (req, res) => {
     //#swagger.tags=['Games']
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid id to perform the function');
+    }
     const gameId = new ObjectId(req.params.id);
     mongodb
         .getDatabase()
         .db()
         .collection('Games')
         .find({_id: gameId})
-        toArray((err, game) => {
+        .toArray((err, game) => {
             if (err) {
                 res.status(400).json({message: err });
             }
@@ -56,6 +59,9 @@ const createGame = async (req, res) => {
 
 const updateGame = async (req, res) => {
     //#swagger.tags=['Games']
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid id to perform the function');
+    }
     const gameId = new ObjectId(req.params.id);
     const game = {
         name: req.body.name,
@@ -76,8 +82,11 @@ const updateGame = async (req, res) => {
 
 const deleteGame = async (req, res) => {
     //#swagger.tags=['Games']
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid id to perform the function');
+    }
     const gameId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db().collection('Games').removeOne({ _id:gameId});
+    const response = await mongodb.getDatabase().db().collection('Games').deleteOne({ _id:gameId});
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {

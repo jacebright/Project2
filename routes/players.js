@@ -1,12 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-const gamesController = require('../controllers/players');
+const playersController = require('../controllers/players');
+const validation = require('../middleware/validation-middleware');
 
-router.get('/', gamesController.getAllPlayers);
+router.get('/', playersController.getAllPlayers);
 
-router.get('/:id', gamesController.getSinglePlayer);
+router.get('/:id', playersController.getSinglePlayer);
 
-router.post('/', gamesController.createPlayer);
+router.post('/', validation.addPlayer, playersController.createPlayer);
+
+router.put('/:id', validation.addPlayer, playersController.updatePlayer);
+
+router.delete('/:id', playersController.deletePlayer);
 
 module.exports = router;

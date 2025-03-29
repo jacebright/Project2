@@ -1,7 +1,7 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAllPlayers = async (req, res) => {
+const getAllPlayers = (req, res) => {
     //#swagger.tags=['Players']
     mongodb
         .getDatabase()
@@ -11,21 +11,24 @@ const getAllPlayers = async (req, res) => {
         .toArray((err, player) => {
             if (err) {
                 res.status(400).json({ message: err});
-            }
+            } 
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(player);
         });
 };
 
-const getSinglePlayer = async (req, res) => {
+const getSinglePlayer = (req, res) => {
     //#swagger.tags=['Players']
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid id to perform the function');
+    }
     const playerId = new ObjectId(req.params.id);
     mongodb
         .getDatabase()
         .db()
         .collection('Players')
         .find({_id: playerId})
-        toArray((err, player) => {
+        .toArray((err, player) => {
             if (err) {
                 res.status(400).json({message: err });
             }
@@ -51,6 +54,9 @@ const createPlayer = async (req, res) => {
 
 const updatePlayer = async (req, res) => {
     //#swagger.tags=['Players']
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid id to perform the function');
+    }
     const playerId = new ObjectId(req.params.id);
     const player = {
         firstName: req.body.firstName,
@@ -67,8 +73,11 @@ const updatePlayer = async (req, res) => {
 
 const deletePlayer = async (req, res) => {
     //#swagger.tags=['Players']
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid id to perform the function');
+    }
     const playerId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db().collection('Players').removeOne({ _id:playerId});
+    const response = await mongodb.getDatabase().db().collection('Players').deleteOne({ _id:playerId});
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
