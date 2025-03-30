@@ -283,37 +283,18 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "firstName": {
                   "type": "string",
-                  "example": "Monopoly"
+                  "example": "John"
                 },
-                "minPlayers": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "2"
-                },
-                "maxPlayers": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "6"
-                },
-                "time": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "240"
-                },
-                "plays": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "3"
-                },
-                "publisher": {
+                "lastName": {
                   "type": "string",
-                  "example": "Hasbro"
+                  "example": "Doe"
                 },
-                "genre": {
+                "favorite": {
                   "type": "string",
-                  "example": "Cooperative"
+                  "example": "Twilight Imperium 4th Edition"
+                }
                 }
               }
             }
