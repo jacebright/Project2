@@ -5,8 +5,8 @@ const doc = {
         title: 'Games Api',
         description: 'Games Api'
     },
-    host: 'localhost:3000',
-    schemes: ['http', 'https']
+    host: 'project2-tm4d.onrender.com',
+    schemes: ['https']
 };
 
 const outputFile = './swagger.json';
