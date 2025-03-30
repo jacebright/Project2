@@ -5,29 +5,21 @@
     "description": "Games Api",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "project2-tm4d.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
-    "/login": {
+    "/": {
       "get": {
+        "tags": [
+          "Hello World"
+        ],
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -112,9 +104,6 @@
           "204": {
             "description": "No Content"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "412": {
             "description": "Precondition Failed"
           },
@@ -147,6 +136,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
           }
         }
       },
@@ -211,9 +203,6 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "412": {
             "description": "Precondition Failed"
           },
@@ -242,9 +231,6 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -266,9 +252,6 @@
           },
           "400": {
             "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
           }
         }
       },
@@ -284,37 +267,17 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "firstName": {
                   "type": "string",
-                  "example": "Monopoly"
+                  "example": "John"
                 },
-                "minPlayers": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "2"
-                },
-                "maxPlayers": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "6"
-                },
-                "time": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "240"
-                },
-                "plays": {
-                  "type": "integer",
-                  "format": "int64",
-                  "example": "3"
-                },
-                "publisher": {
+                "lastName": {
                   "type": "string",
-                  "example": "Hasbro"
+                  "example": "Doe"
                 },
-                "genre": {
+                "favorite": {
                   "type": "string",
-                  "example": "Cooperative"
+                  "example": "Twilight Imperium 4th Edition"
                 }
               }
             }
@@ -323,9 +286,6 @@
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "412": {
             "description": "Precondition Failed"
@@ -360,8 +320,8 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
+          "412": {
+            "description": "Precondition Failed"
           }
         }
       },
@@ -406,9 +366,6 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "412": {
             "description": "Precondition Failed"
           },
@@ -436,9 +393,6 @@
           },
           "400": {
             "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
