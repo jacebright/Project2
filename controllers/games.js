@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectId;
 const getAllGames = async (req, res) => {
     //#swagger.tags=['Games']
     try {
-        const resut = await mongodb
+        const result = await mongodb
             .getDatabase()
             .db()
             .collection('Games')

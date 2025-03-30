@@ -11,7 +11,7 @@ const getAllPlayers = async (req, res) => {
             .find()
             .toArray();
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(player);
+        res.status(200).json(result);
     } catch (err) {
             res.status(400).json({ message:err});
         };
@@ -31,7 +31,7 @@ const getSinglePlayer = async (req, res) => {
             .find({_id: playerId})
             .toArray()
         res.setHeader('Content-Type',   'application/json');
-        res.status(200).json(player[0]);
+        res.status(200).json(result[0]);
     } catch (err) {
         res.status(400).json({message:err});
     }
